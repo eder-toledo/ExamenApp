@@ -49,6 +49,8 @@
     <Compile Include="Models\ex_User_has_ex_Grado.js" />
     <Compile Include="Models\ex_User_has_ex_Materia.js" />
     <Compile Include="Models\index.js" />
+    <Compile Include="Routes\index.js" />
+    <Compile Include="Routes\materiasRoute.js" />
     <Compile Include="server.js" />
     <Compile Include="tools.js" />
     <Content Include="import-mysql-db.json" />
@@ -57,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
+    <Folder Include="Routes\" />
     <Folder Include="typings\" />
     <Folder Include="typings\globals\" />
     <Folder Include="typings\globals\mysql\" />

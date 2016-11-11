@@ -8,4 +8,13 @@ var sequelize = new Sequelize('examenes', 'root', '',{
 
 var models = require('sequelize-auto-import')(sequelize, '');
 
+//Relación materia - grado
+models.ex_Materia.belongsTo(models.ex_Grado, {
+    foreignKey: 'ex_Grado_idGrado'
+});
+
+models.ex_Grado.hasMany(models.ex_Materia, {
+    foreignKey: 'ex_Grado_idGrado'
+});
+
 module.exports = models;
