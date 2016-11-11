@@ -1,0 +1,12 @@
+﻿{
+  "user": "root",
+  "password": "",
+  "host": "127.0.0.1",
+  "database": "examenes",
+  "dir": "./Models",
+  "port": 3306,
+  "compile": "examenes",
+  "logging": false,
+  "space": 2,
+  "reverse": false
+}
