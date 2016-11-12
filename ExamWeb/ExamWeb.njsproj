@@ -51,9 +51,15 @@
     <Compile Include="Models\index.js" />
     <Compile Include="Routes\carrerasRoute.js" />
     <Compile Include="Routes\datosAcademicosRoute.js" />
+    <Compile Include="Routes\estadosRoute.js" />
     <Compile Include="Routes\examenesRoute.js" />
+    <Compile Include="Routes\gradoAcademicoRoute.js" />
+    <Compile Include="Routes\gradosRoute.js" />
     <Compile Include="Routes\index.js" />
     <Compile Include="Routes\materiasRoute.js" />
+    <Compile Include="Routes\nivelesRoute.js" />
+    <Compile Include="Routes\paisesRoute.js" />
+    <Compile Include="Routes\periodosRoute.js" />
     <Compile Include="Routes\preguntasRoute.js" />
     <Compile Include="Routes\respuestasRoute.js" />
     <Compile Include="Routes\usersRoute.js" />
