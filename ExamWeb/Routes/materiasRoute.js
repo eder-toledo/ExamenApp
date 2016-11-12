@@ -1,4 +1,5 @@
 ﻿materiasRoute = function (server, db, Sequelize, apiUrl) {
+    urlRoute = apiUrl + 'materias/'
     function allMaterias(req, res, next) {
         db.ex_Materia.findAll({
             include: [{
@@ -18,10 +19,22 @@
     }
 
     function materiaById(req, res, next) {
-        res.send("hello" + req.params.id);
-        next();
+        db.ex_Materia.find({
+            where: {
+                idMateria: req.params.id
+            }
+        }).then(function (materia) {
+            data = {};
+            if (!data) {
+                data.error = "true";
+            } else {
+                data.data = materia;
+            }
+            res.send(data);
+            next();
+            });
     }
 
-    server.get(apiUrl + 'materias/', allMaterias);
-    server.get(apiUrl + 'materias/:id', materiaById);
+    server.get(urlRoute, allMaterias);
+    server.get(urlRoute + ':id', materiaById);
 }

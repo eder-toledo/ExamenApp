@@ -1,4 +1,6 @@
 ﻿carrerasRoute = function (server, db, Sequelize, apiUrl) {
+    urlRoute = apiUrl + 'carreras/';
+
     function allCarreras(req, res, next) {
         db.ex_Carrera.findAll({
 
@@ -14,5 +16,23 @@
             });
     }
 
-    server.get(apiUrl + 'carreras/', allCarreras);
+    function carreraById(req, res, next) {
+        db.ex_Carrera.find({
+            where: {
+                idCarrera: req.params.id
+            }
+        }).then(function (carrera) {
+            data = {};
+            if (!data) {
+                data.error = "true";
+            } else {
+                data.data = carrera;
+            }
+            res.send(data);
+            next();
+            });
+    }
+
+    server.get(urlRoute, allCarreras);
+    server.get(urlRoute + ':id', carreraById);
 }
