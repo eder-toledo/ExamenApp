@@ -49,8 +49,14 @@
     <Compile Include="Models\ex_User_has_ex_Grado.js" />
     <Compile Include="Models\ex_User_has_ex_Materia.js" />
     <Compile Include="Models\index.js" />
+    <Compile Include="Routes\carrerasRoute.js" />
+    <Compile Include="Routes\datosAcademicosRoute.js" />
+    <Compile Include="Routes\examenesRoute.js" />
     <Compile Include="Routes\index.js" />
     <Compile Include="Routes\materiasRoute.js" />
+    <Compile Include="Routes\preguntasRoute.js" />
+    <Compile Include="Routes\respuestasRoute.js" />
+    <Compile Include="Routes\usersRoute.js" />
     <Compile Include="server.js" />
     <Compile Include="tools.js" />
     <Content Include="import-mysql-db.json" />
