@@ -18,12 +18,21 @@ models.ex_Grado.hasMany(models.ex_Materia, {
 });
 
 //Relacion usuario - estado
-models.ex_Usuario.belongsTo(models.ex_Estado, {
-    foreignKey: 'idEstado'
+models.ex_User.belongsTo(models.ex_Estado, {
+    foreignKey: 'ex_Estado_idEstado'
 });
 
-models.ex_Estado.hasMany(models.ex_Usuario, {
-    foreignKey: 'idEstado'
+models.ex_Estado.hasMany(models.ex_User, {
+    foreignKey: 'ex_Estado_idEstado'
+});
+
+//Relacion datos academicos - usuario
+models.ex_DatosAcademicos.belongsTo(models.ex_User, {
+    foreignKey: 'ex_user_idUser'
+});
+
+models.ex_User.hasOne(models.ex_DatosAcademicos, {
+    foreignKey: 'ex_user_idUser'
 });
 
 module.exports = models;

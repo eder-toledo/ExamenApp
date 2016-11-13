@@ -19,7 +19,8 @@
         db.ex_User.find({
             where: {
                 idUser: req.params.id
-            }
+            },
+            include: [db.ex_DatosAcademicos]
         }).then(function (users) {
             data = {};
             if (!users) {

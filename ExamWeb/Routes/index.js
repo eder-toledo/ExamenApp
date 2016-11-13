@@ -29,7 +29,7 @@ exec = function (server, db, Sequelize) {
     periodosRoute(server, db, Sequelize, apiUrl);
     require('./tipoPreguntasRoute.js');
     tipoPreguntasRoute(server, db, Sequelize, apiUrl);
-    require('tipoRespuestasRoute.js');
+    require('./tipoRespuestasRoute.js');
     tipoRespuestasRoute(server, db, Sequelize, apiUrl);
 }
 

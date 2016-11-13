@@ -1,13 +1,13 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('ex_User_has_ex_Grado', {
+  return sequelize.define('ex_user_has_ex_grado', {
     ex_User_idUser: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
       primaryKey: true,
       references: {
-        model: 'ex_User',
+        model: 'ex_user',
         key: 'idUser'
       }
     },
@@ -16,11 +16,11 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       primaryKey: true,
       references: {
-        model: 'ex_Grado',
+        model: 'ex_grado',
         key: 'idGrado'
       }
     }
   }, {
-    tableName: 'ex_User_has_ex_Grado'
+    tableName: 'ex_user_has_ex_grado'
   });
 };
