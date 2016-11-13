@@ -23,7 +23,7 @@
             }
         }).then(function (carrera) {
             data = {};
-            if (!data) {
+            if (!carrera) {
                 data.error = "true";
             } else {
                 data.data = carrera;

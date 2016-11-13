@@ -1,8 +1,8 @@
-﻿preguntasRoute = function (server, db, Sequelize, apiUrl) {
-    urlRoute = apiUrl + '/preguntas';
+﻿tipoPreguntasRoute = function (server, db, Sequelize, apiUrl) {
+    urlRoute = apiUrl + 'tipoPreguntas/';
 
-    function allPreguntas(req, res, next) {
-        db.ex_Pregunta.findAll({
+    function allTipoPreguntas(req, res, next) {
+        db.ex_TipoPregunta.findAll({
         }).then(function (preguntas) {
             var data = {};
             if (!preguntas) {
@@ -15,10 +15,10 @@
         });
     }
 
-    function preguntasById(req, res, next) {
-        db.ex_Pregunta.find({
+    function tipoPreguntasById(req, res, next) {
+        db.ex_TipoPregunta.find({
             where: {
-                idPregunta: req.params.id
+                idTipoPregunta: req.params.id
             }
         }).then(function (preguntas) {
             data = {};
@@ -32,6 +32,6 @@
         });
     }
 
-    server.get(urlRoute, allPreguntas);
-    server.get(urlRoute + ':id', preguntasById);
+    server.get(urlRoute, allTipoPreguntas);
+    server.get(urlRoute + ':id', tipoPreguntasById);
 }

@@ -25,7 +25,7 @@
             }
         }).then(function (materia) {
             data = {};
-            if (!data) {
+            if (!materia) {
                 data.error = "true";
             } else {
                 data.data = materia;

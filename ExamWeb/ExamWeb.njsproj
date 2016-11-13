@@ -62,6 +62,8 @@
     <Compile Include="Routes\periodosRoute.js" />
     <Compile Include="Routes\preguntasRoute.js" />
     <Compile Include="Routes\respuestasRoute.js" />
+    <Compile Include="Routes\tipoPreguntasRoute.js" />
+    <Compile Include="Routes\tipoRespuestasRoute.js" />
     <Compile Include="Routes\usersRoute.js" />
     <Compile Include="server.js" />
     <Compile Include="tools.js" />

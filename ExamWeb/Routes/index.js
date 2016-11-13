@@ -27,6 +27,10 @@ exec = function (server, db, Sequelize) {
     paisesRoute(server, db, Sequelize, apiUrl);
     require('./periodosRoute.js');
     periodosRoute(server, db, Sequelize, apiUrl);
+    require('./tipoPreguntasRoute.js');
+    tipoPreguntasRoute(server, db, Sequelize, apiUrl);
+    require('tipoRespuestasRoute.js');
+    tipoRespuestasRoute(server, db, Sequelize, apiUrl);
 }
 
 module.exports = exec;
