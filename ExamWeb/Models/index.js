@@ -17,4 +17,13 @@ models.ex_Grado.hasMany(models.ex_Materia, {
     foreignKey: 'ex_Grado_idGrado'
 });
 
+//Relacion usuario - estado
+models.ex_Usuario.belongsTo(models.ex_Estado, {
+    foreignKey: 'idEstado'
+});
+
+models.ex_Estado.hasMany(models.ex_Usuario, {
+    foreignKey: 'idEstado'
+});
+
 module.exports = models;

@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('ex_Examen', {
+  return sequelize.define('ex_examen', {
     idExamen: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
@@ -10,17 +10,17 @@ module.exports = function(sequelize, DataTypes) {
     },
     nombre: {
       type: DataTypes.STRING,
-      allowNull: true
+      allowNull: false
     },
     descripcion: {
       type: DataTypes.STRING,
-      allowNull: true
+      allowNull: false
     },
     ex_User_idUser: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
       references: {
-        model: 'ex_User',
+        model: 'ex_user',
         key: 'idUser'
       }
     },
@@ -28,7 +28,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER(11),
       allowNull: false,
       references: {
-        model: 'ex_Periodo',
+        model: 'ex_periodo',
         key: 'idPeriodo'
       }
     },
@@ -44,19 +44,24 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER(11),
       allowNull: false,
       references: {
-        model: 'ex_Materia',
+        model: 'ex_materia',
         key: 'idMateria'
       }
     },
     createdAt: {
-        allowNull: false,
-        type: DataTypes.DATE
+      type: DataTypes.DATE,
+      allowNull: false
     },
     updatedAt: {
-        allowNull: false,
-        type: DataTypes.DATE
+      type: DataTypes.DATE,
+      allowNull: false
+    },
+    estatus: {
+      type: DataTypes.INTEGER(1),
+      allowNull: false,
+      defaultValue: '1'
     }
   }, {
-    tableName: 'ex_Examen'
+    tableName: 'ex_examen'
   });
 };

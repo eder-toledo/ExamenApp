@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('ex_GradoAcademico', {
+  return sequelize.define('ex_gradoacademico', {
     idGrado: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
@@ -13,14 +13,14 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     createdAt: {
-        allowNull: false,
-        type: DataTypes.DATE
+      type: DataTypes.DATE,
+      allowNull: false
     },
     updatedAt: {
-        allowNull: false,
-        type: DataTypes.DATE
+      type: DataTypes.DATE,
+      allowNull: false
     }
   }, {
-    tableName: 'ex_GradoAcademico'
+    tableName: 'ex_gradoacademico'
   });
 };

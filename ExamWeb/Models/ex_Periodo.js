@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('ex_Periodo', {
+  return sequelize.define('ex_periodo', {
     idPeriodo: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
@@ -16,19 +16,23 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER(11),
       allowNull: false,
       references: {
-        model: 'ex_Grado',
+        model: 'ex_grado',
         key: 'idGrado'
       }
     },
     createdAt: {
-        allowNull: false,
-        type: DataTypes.DATE
+      type: DataTypes.DATE,
+      allowNull: false
     },
     updatedAt: {
-        allowNull: false,
-        type: DataTypes.DATE
+      type: DataTypes.DATE,
+      allowNull: false
+    },
+    estatus: {
+      type: DataTypes.INTEGER(1),
+      allowNull: true
     }
   }, {
-    tableName: 'ex_Periodo'
+    tableName: 'ex_periodo'
   });
 };

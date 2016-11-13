@@ -1,26 +1,18 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('ex_DatosAcademicos', {
+  return sequelize.define('ex_datosacademicos', {
     idDatosAcademicos: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
       primaryKey: true,
       autoIncrement: true
     },
-    ex_User_idUser: {
-      type: DataTypes.INTEGER(11),
-      allowNull: false,
-      references: {
-        model: 'ex_User',
-        key: 'idUser'
-      }
-    },
     ex_Grado_idGrado: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
       references: {
-        model: 'ex_GradoAcademico',
+        model: 'ex_gradoacademico',
         key: 'idGrado'
       }
     },
@@ -28,7 +20,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER(11),
       allowNull: false,
       references: {
-        model: 'ex_Carrera',
+        model: 'ex_carrera',
         key: 'idCarrera'
       }
     },
@@ -38,14 +30,22 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: 'Sin especialidad'
     },
     createdAt: {
-        allowNull: false,
-        type: DataTypes.DATE
+      type: DataTypes.DATE,
+      allowNull: false
     },
     updatedAt: {
-        allowNull: false,
-        type: DataTypes.DATE
+      type: DataTypes.DATE,
+      allowNull: false
+    },
+    ex_user_idUser: {
+      type: DataTypes.INTEGER(11),
+      allowNull: false,
+      references: {
+        model: 'ex_user',
+        key: 'idUser'
+      }
     }
   }, {
-    tableName: 'ex_DatosAcademicos'
+    tableName: 'ex_datosacademicos'
   });
 };
