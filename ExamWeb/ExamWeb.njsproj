@@ -46,8 +46,6 @@
     <Compile Include="Models\ex_TipoPregunta.js" />
     <Compile Include="Models\ex_TipoRespuesta.js" />
     <Compile Include="Models\ex_User.js" />
-    <Compile Include="Models\ex_User_has_ex_Grado.js" />
-    <Compile Include="Models\ex_User_has_ex_Materia.js" />
     <Compile Include="Models\index.js" />
     <Compile Include="Routes\carrerasRoute.js" />
     <Compile Include="Routes\datosAcademicosRoute.js" />

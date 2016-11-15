@@ -68,7 +68,7 @@ models.ex_Examen.belongsTo(models.ex_User, {
 });
 
 models.ex_User.hasMany(models.ex_Examen, {
-    foreignKey: 'ex_User_idUser';
+    foreignKey: 'ex_User_idUser'
 });
 
 //Relacion examenes - periodo
@@ -82,11 +82,31 @@ models.ex_Periodo.hasMany(models.ex_Examen, {
 
 //Relacion examenes - materia
 models.ex_Examen.belongsTo(models.ex_Materia, {
-    foreignKey: ex_Materia_idMateria
+    foreignKey: 'ex_Materia_idMateria'
 });
 
 models.ex_Materia.hasMany(models.ex_Examen, {
     foreignKey: 'ex_Materia_idMateria'
 });
+
+//Relacion grados - nivel
+models.ex_Grado.belongsTo(models.ex_Nivel, {
+    foreignKey: 'ex_Nivel_idNivel'
+});
+
+models.ex_Nivel.hasMany(models.ex_Grado, {
+    foreignKey: 'ex_Nivel_idNivel'
+});
+
+//Relacion periodos - grado
+models.ex_Periodo.belongsTo(models.ex_Grado, {
+    foreignKey: 'ex_Grado_idGrado'
+});
+
+models.ex_Grado.hasMany(models.ex_Periodo, {
+    foreignKey: 'ex_Grado_idGrado'
+});
+
+
 
 module.exports = models;

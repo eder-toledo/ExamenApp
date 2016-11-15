@@ -47,6 +47,24 @@
                     sql.include[i].include[0] = {};
                     sql.include[i].include[0].model = db.ex_Pais;
                     sql.include[i].include[0].attributes = { exclude: ['createdAt', 'updatedAt'] };
+                } else if (relations[i] == "examen") {
+                    sql.include[i] = {};
+                    sql.include[i].model = db.ex_Examen;
+                    sql.include[i].attributes = { exclude: ['createdAt', 'updatedAt', 'ex_Materia_idMateria', 'ex_periodo_idPeriodo', 'ex_User_iduser', 'estatus'] };
+                    sql.include[i].include = [];
+                    sql.include[i].include[0] = {};
+                    sql.include[i].include[0].model = db.ex_Periodo;
+                    sql.include[i].include[0].attributes = { exclude: ['createdAt', 'updatedAt', 'estatus', 'ex_Grado_idGrado'] };
+                    sql.include[i].include[0].include = [];
+                    sql.include[i].include[0].include[0] = {};
+                    sql.include[i].include[0].include[0].model = db.ex_Grado;
+                    sql.include[i].include[0].include[0].attributes = { exclude: ['createdAt', 'updatedAt', 'ex_Nivel_idNivel'] };
+                    sql.include[i].include[1] = {};
+                    sql.include[i].include[1].model = db.ex_Materia;
+                    sql.include[i].include[1].attributes = { exclude: ['createdAt', 'updatedAt', 'estatus', 'ex_Grado_idGrado'] };
+                    sql.include[i].include[1].exclude = ['ex_User'];
+                } else {
+                    sql = '';
                 }
             }
         }
