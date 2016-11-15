@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('ex_carrera', {
+  return sequelize.define('ex_Carrera', {
     idCarrera: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
@@ -21,6 +21,6 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     }
   }, {
-    tableName: 'ex_carrera'
+    tableName: 'ex_Carrera'
   });
 };

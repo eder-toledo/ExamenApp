@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('ex_nivel', {
+  return sequelize.define('ex_Nivel', {
     idNivel: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
@@ -26,6 +26,6 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: '1'
     }
   }, {
-    tableName: 'ex_nivel'
+    tableName: 'ex_Nivel'
   });
 };

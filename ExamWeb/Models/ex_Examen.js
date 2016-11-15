@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('ex_examen', {
+  return sequelize.define('ex_Examen', {
     idExamen: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
@@ -20,16 +20,8 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER(11),
       allowNull: false,
       references: {
-        model: 'ex_user',
+        model: 'ex_User',
         key: 'idUser'
-      }
-    },
-    ex_Periodo_idPeriodo: {
-      type: DataTypes.INTEGER(11),
-      allowNull: false,
-      references: {
-        model: 'ex_periodo',
-        key: 'idPeriodo'
       }
     },
     fechaCreacion: {
@@ -44,7 +36,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER(11),
       allowNull: false,
       references: {
-        model: 'ex_materia',
+        model: 'ex_Materia',
         key: 'idMateria'
       }
     },
@@ -62,6 +54,6 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: '1'
     }
   }, {
-    tableName: 'ex_examen'
+    tableName: 'ex_Examen'
   });
 };

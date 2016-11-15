@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('ex_grado', {
+  return sequelize.define('ex_Grado', {
     idGrado: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
@@ -12,7 +12,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER(11),
       allowNull: false,
       references: {
-        model: 'ex_nivel',
+        model: 'ex_Nivel',
         key: 'idNivel'
       }
     },
@@ -29,6 +29,6 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     }
   }, {
-    tableName: 'ex_grado'
+    tableName: 'ex_Grado'
   });
 };
