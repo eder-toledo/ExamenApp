@@ -20,10 +20,19 @@
             }
             res.send(data);
             next();
+        }, function (err) {
+            data = {};
+            data.estatus = "error";
+            data.code = "SearchNotExecuted";
+            data.error = err;
+            res.send(data);
+            next();
         });
     }
 
     function usersById(req, res, next) {
+        sql.where['idUser'] = req.params.id;
+        console.log(sql);
         if (req.params.include != null) {
             sql.include = [];
             relations = req.params.include.split("_");
@@ -67,8 +76,6 @@
                     sql.include[i].include[0].include[0].model = db.ex_Grado;
                     sql.include[i].include[0].include[0].as = 'grado';
                     sql.include[i].include[0].include[0].attributes = { exclude: ['createdAt', 'updatedAt', 'ex_Nivel_idNivel'] };
-                } else {
-                    sql = '';
                 }
             }
         }
@@ -84,6 +91,13 @@
                 data.data = users;
                 data.count = users.length;
             }
+            res.send(data);
+            next();
+        }, function (err) {
+            data = {};
+            data.estatus = "error";
+            data.code = "SearchNotExecuted";
+            data.error = err;
             res.send(data);
             next();
         });
