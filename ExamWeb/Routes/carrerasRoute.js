@@ -1,36 +1,58 @@
 ﻿carrerasRoute = function (server, db, Sequelize, apiUrl) {
     urlRoute = apiUrl + 'carreras/';
 
-    function allCarreras(req, res, next) {
-        db.ex_Carrera.findAll({
+    var sql = {};
+    sql.attributes = { exclude: ['createdAt', 'updatedAt'] };
 
-        }).then(function (carreras) {
+    function allCarreras(req, res, next) {
+        db.ex_Carrera.findAll(sql).then(function (carreras) {
             var data = {};
             if (!carreras) {
-                data.error = "true";
+                data.status = "error";
+                data.code = "ElementNotFound";
+                data.message = "Users not exist";
             } else {
+                data.status = "success";
+                data.code = "ResultsForSearch";
                 data.data = carreras;
+                data.count = carreras.length;
             }
             res.send(data);
             next();
-            });
+        }, function (err) {
+            data = {};
+            data.estatus = "error";
+            data.code = "SearchNotExecuted";
+            data.error = err;
+            res.send(data);
+            next();
+        });
     }
 
     function carreraById(req, res, next) {
-        db.ex_Carrera.find({
-            where: {
-                idCarrera: req.params.id
-            }
-        }).then(function (carrera) {
+        sql.where = { idCarrera: req.params.id };
+        db.ex_Carrera.find(sql).then(function (carrera) {
             data = {};
             if (!carrera) {
-                data.error = "true";
+                data.status = "error";
+                data.code = "ElementNotFound";
+                data.message = "Users not exist";
             } else {
+                data.status = "success"
+                data.code = "ResultsForSearch"
                 data.data = carrera;
+                data.count = carrera.length;
             }
             res.send(data);
             next();
-            });
+        }, function (err) {
+            data = {};
+            data.estatus = "error";
+            data.code = "SearchNotExecuted";
+            data.error = err;
+            res.send(data);
+            next();
+        });
     }
 
     server.get(urlRoute, allCarreras);

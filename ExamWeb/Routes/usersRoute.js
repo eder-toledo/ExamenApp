@@ -11,7 +11,7 @@
             if (!users) {
                 data.status = "error";
                 data.code = "ElementNotFound";
-                data.message = "User with id " + req.params.id + " does not exist";
+                data.message = "Users not exist";
             } else {
                 data.status = "success"
                 data.code = "ResultsForSearch"
@@ -32,7 +32,7 @@
 
     function usersById(req, res, next) {
         sql.where['idUser'] = req.params.id;
-        console.log(sql);
+
         if (req.params.include != null) {
             sql.include = [];
             relations = req.params.include.split("_");
