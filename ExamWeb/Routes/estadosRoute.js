@@ -55,6 +55,7 @@
                 data.status = "success";
                 data.code = "ResultsForSearch";
                 data.data = estados;
+                data.count = estados.length;
             }
             res.send(data);
             next();
