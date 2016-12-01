@@ -32,6 +32,10 @@
         });
     }
 
+    function preguntasByExamenId(req, res, next) {
+
+    }
+
     server.get(urlRoute, allPreguntas);
     server.get(urlRoute + ':id', preguntasById);
 }

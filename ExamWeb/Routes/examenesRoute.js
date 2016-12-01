@@ -136,4 +136,5 @@
 
     server.get(urlRoute, allExamenes);
     server.get(urlRoute + ':id', examenById);
+    server.get(urlRoute + 'byUser/:id', examenesByIduser);
 }
