@@ -1,10 +1,10 @@
 ﻿respuestasRoute = function (server, db, Sequelize, apiUrl) {
     urlRoute = apiUrl + 'respuestas/';
 
-    sql = {};
-    sql.attributes = { exclude: ['createdAt', 'updatedAt'] };
-
     function allRespuestas(req, res, next) {
+        sql = {};
+        sql.attributes = { exclude: ['createdAt', 'updatedAt'] };
+
         db.ex_Respuesta.findAll(sql).then(function (respuestas) {
             var data = {};
             if (!respuestas) {
@@ -30,7 +30,8 @@
     }
 
     function respuestasById(req, res, next) {
-
+        sql = {};
+        sql.attributes = { exclude: ['createdAt', 'updatedAt'] };
         sql.where = { idRespuesta: req.params.id };
 
         if (req.params.include != null) {
@@ -70,6 +71,8 @@
     }
 
     function respuestasByPregunta(req, res, next) {
+        sql = {};
+        sql.attributes = { exclude: ['createdAt', 'updatedAt'] };
         sql.where = { ex_TipoRespuesta_idTipoRespuesta: req.params.id };
 
         if (req.params.include != null) {

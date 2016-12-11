@@ -55,6 +55,22 @@
         });
     }
 
+    function saveCarrera(req, res, next) {
+        var carrera = db.ex_Carrera.build({
+            nombre: 'Carrera ejemplo'
+        });
+        
+        carrera.save().complete(function (err) {
+            if (err) {
+                console.log('Error in Inserting Record');
+            } else {
+                console.log('Data successfully inserted');
+            }
+        });
+    }
+
     server.get(urlRoute, allCarreras);
     server.get(urlRoute + ':id', carreraById);
+
+    server.post(urlRoute, saveCarrera);
 }

@@ -1,9 +1,10 @@
 ﻿gradoAcademicoRoute = function (server, db, Sequelize, apiUrl) {
     urlRoute = apiUrl + 'gradosAcademicos/';
 
-    sql = {};
-    sql.attributes = { exclude: ['createdAt', 'updatedAt'] };
     function allGradosAcademicos(req, res, next) {
+        sql = {};
+        sql.attributes = { exclude: ['createdAt', 'updatedAt'] };
+
         db.ex_GradoAcademico.findAll(sql).then(function (gradosAcademicos) {
             var data = {};
             if (!gradosAcademicos) {
@@ -29,7 +30,10 @@
     }
 
     function gradosAcademicosById(req, res, next) {
+        sql = {};
+        sql.attributes = { exclude: ['createdAt', 'updatedAt'] };
         sql.where = { idGrado: req.params.id };
+
         db.ex_Carrera.find(sql).then(function (gradosAcademicos) {
             data = {};
             if (!gradosAcademicos) {

@@ -1,10 +1,10 @@
 ﻿examenesRoute = function (server, db, Sequelize, apiUrl) {
     urlRoute = apiUrl + 'examenes/';
-
-    sql = {};
-    sql.attributes = { exclude: ['createdAt', 'updatedAt'] };
     
     function allExamenes(req, res, next) {
+        sql = {};
+        sql.attributes = { exclude: ['createdAt', 'updatedAt'] };
+
         db.ex_Examen.findAll(sql).then(function (examanes) {
             var data = {};
             if (!examanes) {
@@ -30,6 +30,8 @@
     }
 
     function examenById(req, res, next) {
+        sql = {};
+        sql.attributes = { exclude: ['createdAt', 'updatedAt'] };
         sql.where = { idExamen: req.params.id };
 
         if (req.params.include != null) {
@@ -85,6 +87,8 @@
     }
 
     function examenesByIduser(req, res, next) {
+        sql = {};
+        sql.attributes = { exclude: ['createdAt', 'updatedAt'] };
         sql.where = { ex_User_idUser: req.params.id };
 
         if (req.params.include != null) {

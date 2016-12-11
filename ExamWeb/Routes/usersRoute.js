@@ -1,11 +1,11 @@
 ﻿usersRoute = function (server, db, Sequelize, apiUrl) {
     urlRoute = apiUrl + 'users/';
 
-    var sql = {};
-    sql.where = { estatus: "Activo"};
-    sql.attributes = { exclude: ['createdAt', 'updatedAt', 'estatus', 'password'] };
-
     function allUsers(req, res, next) {
+        var sql = {};
+        sql.where = { estatus: "Activo" };
+        sql.attributes = { exclude: ['createdAt', 'updatedAt', 'estatus', 'password'] };
+
         db.ex_User.findAll(sql).then(function (users) {
             var data = {};
             if (!users) {
@@ -31,6 +31,9 @@
     }
 
     function usersById(req, res, next) {
+        var sql = {};
+        sql.where = { estatus: "Activo" };
+        sql.attributes = { exclude: ['createdAt', 'updatedAt', 'estatus', 'password'] };
         sql.where['idUser'] = req.params.id;
 
         if (req.params.include != null) {

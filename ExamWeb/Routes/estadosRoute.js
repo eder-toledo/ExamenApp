@@ -1,10 +1,9 @@
 ﻿estadosRoute = function (server, db, Sequelize, apiUrl) {
     urlRoute = apiUrl + 'estados/';
 
-    sql = {};
-    sql.attributes = { exclude: ['createdAt', 'updatedAt'] };
-
     function allEstados(req, res, next) {
+        sql = {};
+        sql.attributes = { exclude: ['createdAt', 'updatedAt'] };
         db.ex_Estado.findAll(sql).then(function (estados) {
             var data = {};
             if (!estados) {
@@ -30,6 +29,8 @@
     }
 
     function estadosById(req, res, next) {
+        sql = {};
+        sql.attributes = { exclude: ['createdAt', 'updatedAt'] };
         sql.where = { idEstado: req.params.id };
 
         if (req.params.include != null) {

@@ -1,10 +1,10 @@
 ﻿gradosRoute = function (server, db, Sequelize, apiUrl) {
     urlRoute = apiUrl + 'grados/';
 
-    sql = {};
-    sql.attributes = { exclude: ['createdAt', 'updatedAt'] };
-
     function allGrados(req, res, next) {
+        sql = {};
+        sql.attributes = { exclude: ['createdAt', 'updatedAt'] };
+
         db.ex_Grado.findAll(sql).then(function (grados) {
             var data = {};
             if (!grados) {
@@ -30,6 +30,8 @@
     }
 
     function gradosById(req, res, next) {
+        sql = {};
+        sql.attributes = { exclude: ['createdAt', 'updatedAt'] };
         sql.where = { idGrado: req.params.id };
 
         if (req.params.include != null) {

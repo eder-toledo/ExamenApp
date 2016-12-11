@@ -30,7 +30,10 @@
     }
 
     function nivelesById(req, res, next) {
+        sql = {};
+        sql.attributes = { exclude: ['createdAt', 'updatedAt'] };
         sql.where = { idNivel: req.params.id };
+
         db.ex_Nivel.find(sql).then(function (niveles) {
             data = {};
             if (!niveles) {

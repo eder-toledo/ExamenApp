@@ -1,10 +1,10 @@
 ﻿paisesRoute = function (server, db, Sequelize, apiUrl) {
     urlRoute = apiUrl + 'paises/';
 
-    sql = {};
-    sql.attributes = { exclude: ['createdAt', 'updatedAt'] };
-
     function allPaises(req, res, next) {
+        sql = {};
+        sql.attributes = { exclude: ['createdAt', 'updatedAt'] };
+
         db.ex_Pais.findAll(sql).then(function (paises) {
             var data = {};
             if (!paises) {
@@ -30,7 +30,10 @@
     }
 
     function paisesById(req, res, next) {
+        sql = {};
+        sql.attributes = { exclude: ['createdAt', 'updatedAt'] };
         sql.where = { idpais: req.params.id };
+
         db.ex_Pais.find(sql).then(function (paises) {
             data = {};
             if (!paises) {

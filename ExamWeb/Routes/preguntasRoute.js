@@ -121,7 +121,7 @@
         });
     }
 
-    server.get(urlRoute, allPreguntas);
+    server.get(urlRoute + 'all', allPreguntas);
     server.get(urlRoute + ':id', preguntasById);
     server.get(urlRoute + 'byTest/:id', preguntasByExamenId);
 }

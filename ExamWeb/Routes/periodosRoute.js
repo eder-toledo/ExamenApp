@@ -1,10 +1,10 @@
 ﻿periodosRoute = function (server, db, Sequelize, apiUrl) {
     urlRoute = apiUrl + 'periodos/';
 
-    sql = {};
-    sql.attributes = { exclude: ['createdAt', 'updatedAt'] };
-
     function allPeriodos(req, res, next) {
+        sql = {};
+        sql.attributes = { exclude: ['createdAt', 'updatedAt'] };
+
         db.ex_Periodo.findAll(sql).then(function (periodos) {
             var data = {};
             if (!periodos) {
@@ -30,7 +30,8 @@
     }
 
     function periodosById(req, res, next) {
-
+        sql = {};
+        sql.attributes = { exclude: ['createdAt', 'updatedAt'] };
         sql.where = { idPeriodo: req.params.id };
 
         if (req.params.include != null) {

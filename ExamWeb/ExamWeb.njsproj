@@ -64,7 +64,6 @@
     <Compile Include="Routes\tipoRespuestasRoute.js" />
     <Compile Include="Routes\usersRoute.js" />
     <Compile Include="server.js" />
-    <Compile Include="tools.js" />
     <Content Include="import-mysql-db.json" />
     <Content Include="package.json" />
     <Content Include="README.md" />

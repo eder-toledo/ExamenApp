@@ -1,10 +1,10 @@
 ﻿materiasRoute = function (server, db, Sequelize, apiUrl) {
     urlRoute = apiUrl + 'materias/';
-
-    sql = {};
-    sql.attributes = { exclude: ['createdAt', 'updatedAt'] };
     
     function allMaterias(req, res, next) {
+        sql = {};
+        sql.attributes = { exclude: ['createdAt', 'updatedAt'] };
+
         db.ex_Materia.findAll(sql).then(function (materias) {
             var data = {};
             if (!materias) {
@@ -30,6 +30,8 @@
     }
 
     function materiaById(req, res, next) {
+        sql = {};
+        sql.attributes = { exclude: ['createdAt', 'updatedAt'] };
         sql.where = { idMateria: req.params.id };
 
         if (req.params.include != null) {
