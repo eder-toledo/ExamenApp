@@ -10,7 +10,7 @@
             if (!examanes) {
                 data.status = "error";
                 data.code = "ElementNotFound";
-                data.message = "Users not exist";
+                data.message = "Tests not exist";
             } else {
                 data.status = "success"
                 data.code = "ResultsForSearch"
@@ -65,7 +65,7 @@
             if (!examenes) {
                 data.status = "error";
                 data.code = "ElementNotFound";
-                data.message = "Users not exist";
+                data.message = "Tests not exist";
             } else {
                 data.status = "success";
                 data.code = "ResultsForSearch";

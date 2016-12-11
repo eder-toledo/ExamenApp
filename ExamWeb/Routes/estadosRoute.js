@@ -10,7 +10,7 @@
             if (!estados) {
                 data.status = "error";
                 data.code = "ElementNotFound";
-                data.message = "Users not exist";
+                data.message = "State not exist";
             } else {
                 data.status = "success"
                 data.code = "ResultsForSearch"
@@ -50,7 +50,7 @@
             if (!estados) {
                 data.status = "error";
                 data.code = "ElementNotFound";
-                data.message = "Users not exist";
+                data.message = "State not exist";
             } else{
                 data.status = "success";
                 data.code = "ResultsForSearch";

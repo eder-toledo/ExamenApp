@@ -1,32 +1,56 @@
 ﻿tipoRespuestasRoute = function (server, db, Sequelize, apiUrl) {
     urlRoute = apiUrl + 'tipoRespuestas/';
 
+    sql = {};
+    sql.attributes = { exclude: ['createdAt', 'updatedAt'] };
+
     function allTipoRespuestas(req, res, next) {
-        db.ex_TipoRespuesta.findAll({
-        }).then(function (respuestas) {
+        db.ex_TipoRespuesta.findAll(sql).then(function (respuestas) {
             var data = {};
             if (!respuestas) {
-                data.error = "true";
+                data.status = "error";
+                data.code = "ElementNotFound";
+                data.message = "Type answers not exist";
             } else {
+                data.status = "success";
+                data.code = "ResultsForSearch";
                 data.data = respuestas;
+                data.count = respuestas.length;
             }
+            res.send(data);
+            next();
+        }, function (err) {
+            data = {};
+            data.estatus = "error";
+            data.code = "SearchNotExecuted";
+            data.error = err;
             res.send(data);
             next();
         });
     }
 
     function tipoRespuestasById(req, res, next) {
-        db.ex_TipoPregunta.find({
-            where: {
-                idTipoRespuesta: req.params.id
-            }
-        }).then(function (preguntas) {
+        sql.where = { idTipoRespuesta: req.params.id };
+
+        db.ex_TipoPregunta.find(sql).then(function (preguntas) {
             data = {};
             if (!preguntas) {
-                data.error = "true";
+                data.status = "error";
+                data.code = "ElementNotFound";
+                data.message = "Type answers not exist";
             } else {
-                data.data = preguntas;
+                data.status = "success";
+                data.code = "ResultsForSearch";
+                data.data = respuestas;
+                data.count = respuestas.length;
             }
+            res.send(data);
+            next();
+        }, function (err) {
+            data = {};
+            data.estatus = "error";
+            data.code = "SearchNotExecuted";
+            data.error = err;
             res.send(data);
             next();
         });

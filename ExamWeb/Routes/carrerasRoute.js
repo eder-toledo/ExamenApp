@@ -10,7 +10,7 @@
             if (!carreras) {
                 data.status = "error";
                 data.code = "ElementNotFound";
-                data.message = "Users not exist";
+                data.message = "Carrers not exist";
             } else {
                 data.status = "success";
                 data.code = "ResultsForSearch";
@@ -36,7 +36,7 @@
             if (!carrera) {
                 data.status = "error";
                 data.code = "ElementNotFound";
-                data.message = "Users not exist";
+                data.message = "Carrers not exist";
             } else {
                 data.status = "success"
                 data.code = "ResultsForSearch"

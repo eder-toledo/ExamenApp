@@ -10,7 +10,7 @@
             if (!materias) {
                 data.status = "error";
                 data.code = "ElementNotFound";
-                data.message = "Users not exist";
+                data.message = "Materias not exist";
             } else {
                 data.status = "success";
                 data.code = "ResultsForSearch";
@@ -56,7 +56,7 @@
             if (!materia) {
                 data.status = "error";
                 data.code = "ElementNotFound";
-                data.message = "Users not exist";
+                data.message = "Materias not exist";
             } else {
                 data.status = "success";
                 data.code = "ResultsForSearch";
