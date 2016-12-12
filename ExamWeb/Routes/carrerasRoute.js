@@ -56,17 +56,41 @@
     }
 
     function saveCarrera(req, res, next) {
-        var carrera = db.ex_Carrera.build({
-            nombre: 'Carrera ejemplo'
-        });
-        
-        carrera.save().complete(function (err) {
-            if (err) {
-                console.log('Error in Inserting Record');
-            } else {
-                console.log('Data successfully inserted');
+
+        db.ex_Carrera.create(
+            {
+                nombre: req.params.nombreCarrera
             }
-        });
+        ).then(function (carrera) {
+            data = {};
+            if (carrera == null) {
+                data.estatus = "error";
+                data.code = "InsertNotExecuted";
+                res.send(data);
+                next();
+            } else {
+                data.status = "success"
+                data.code = "InsertExcecute"
+                data.data = carrera;
+                res.send(data);
+                next();
+            }
+        }).catch(Sequelize.ValidationError, function (err) {
+            data = {};
+            data.estatus = "error";
+            data.code = "SearchNotExecuted";
+            data.error = err.message;
+            res.send(data);
+            next();
+        }).catch(function (err) {
+            data = {};
+            data.estatus = "error";
+            data.code = "SearchNotExecuted";
+            data.error = err.message;
+            res.send(data);
+            next();
+            }
+        );
     }
 
     server.get(urlRoute, allCarreras);
