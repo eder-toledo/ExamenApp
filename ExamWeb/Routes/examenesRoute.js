@@ -138,7 +138,51 @@
         });
     }
 
+    function saveExamen(req, res, next) {
+        //Todo: Agregar validacion de campos para seguridad
+
+        db.ex_Examen.create({
+            nombre: req.params.nombreExamen,
+            descripcion: req.params.descripcion,
+            ex_User_idUser: req.params.idUser,
+            indicaciones: req.params.indicaciones,
+            ex_Materia_idMateria: req.params.idMateria,
+            fechaCreacion: new Date()
+        }).then(function (examen) {
+            data = {};
+            if (examen == null) {
+                data.estatus = "error";
+                data.code = "InsertNotExecuted";
+                res.send(data);
+                next();
+            } else {
+                data.status = "success"
+                data.code = "InsertExcecute"
+                data.data = examen;
+                res.send(data);
+                next();
+            }
+        }).catch(Sequelize.ValidationError, function (err) {
+            data = {};
+            data.estatus = "error";
+            data.code = "InsertNotExecuted";
+            data.error = err.message;
+            res.send(data);
+            next();
+        }).catch(function (err) {
+            data = {};
+            data.estatus = "error";
+            data.code = "InsertNotExecuted";
+            data.error = err.message;
+            res.send(data);
+            next();
+        }
+            );
+    }
+
     server.get(urlRoute, allExamenes);
     server.get(urlRoute + ':id', examenById);
     server.get(urlRoute + 'byUser/:id', examenesByIduser);
+
+    server.post(urlRoute, saveExamen);
 }

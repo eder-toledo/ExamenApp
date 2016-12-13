@@ -111,7 +111,48 @@
         });
     }
 
+    function saveRespuesta(req, res, next) {
+        //Todo: Agregar validacion de campos para seguridad
+
+        db.ex_Respuesta.create({
+            respuesta: req.params.respuesta,
+            ex_Pregunta_idPregunta: req.params.idPregunta,
+            ex_TipoRespuesta_idTipoRespuesta: req.params.idTipoRespuesta
+        }).then(function (respuesta) {
+            data = {};
+            if (carrera == null) {
+                data.estatus = "error";
+                data.code = "InsertNotExecuted";
+                res.send(data);
+                next();
+            } else {
+                data.status = "success"
+                data.code = "InsertExcecute"
+                data.data = respuesta;
+                res.send(data);
+                next();
+            }
+        }).catch(Sequelize.ValidationError, function (err) {
+            data = {};
+            data.estatus = "error";
+            data.code = "InsertNotExecuted";
+            data.error = err.message;
+            res.send(data);
+            next();
+        }).catch(function (err) {
+            data = {};
+            data.estatus = "error";
+            data.code = "InsertNotExecuted";
+            data.error = err.message;
+            res.send(data);
+            next();
+        }
+            );
+    }
+
     server.get(urlRoute, allRespuestas);
     server.get(urlRoute + ':id', respuestasById);
     server.get(urlRoute + 'byQuestion/:id', respuestasByPregunta);
+
+    server.post(urlRoute, saveRespuesta);
 }

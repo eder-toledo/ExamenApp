@@ -106,6 +106,51 @@
         });
     }
 
+    function saveUser(req, res, next) {
+        //Todo: Agregar validacion de campos para seguridad
+
+        db.ex_User.create({
+            nombre: req.params.nombreUser,
+            sexo: req.params.sexo,
+            edad: req.params.edad,
+            email: req.params.email,
+            localidad: req.params.localidad,
+            ex_Estado_idEstado: req.params.idEstado,
+            password: req.params.password
+        }).then(function (user) {
+            data = {};
+            if (carrera == null) {
+                data.estatus = "error";
+                data.code = "InsertNotExecuted";
+                res.send(data);
+                next();
+            } else {
+                data.status = "success"
+                data.code = "InsertExcecute"
+                data.data = user;
+                res.send(data);
+                next();
+            }
+        }).catch(Sequelize.ValidationError, function (err) {
+            data = {};
+            data.estatus = "error";
+            data.code = "InsertNotExecuted";
+            data.error = err.message;
+            res.send(data);
+            next();
+        }).catch(function (err) {
+            data = {};
+            data.estatus = "error";
+            data.code = "InsertNotExecuted";
+            data.error = err.message;
+            res.send(data);
+            next();
+        }
+            );
+    }
+
     server.get(urlRoute, allUsers);
     server.get(urlRoute + ':id', usersById);
+
+    server.post(urlRoute, saveUser);
 }

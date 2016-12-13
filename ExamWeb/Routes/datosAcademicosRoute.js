@@ -58,6 +58,48 @@
         });
     }
 
+    function saveDatosAcademicos(req, res, next) {
+        //Todo: Agregar validacion de campos para seguridad
+
+        db.ex_DatosAcademicos.create({
+            ex_Grado_idGrado: req.params.idGrado,
+            ex_Carrera_idCarrera: req.params.idCarrera,
+            especialidad: req.params.especialidad,
+            ex_user_idUser: req.params.idUser
+        }).then(function (datosAcademicos) {
+            data = {};
+            if (datosAcademicos == null) {
+                data.estatus = "error";
+                data.code = "InsertNotExecuted";
+                res.send(data);
+                next();
+            } else {
+                data.status = "success"
+                data.code = "InsertExcecute"
+                data.data = datosAcademicos;
+                res.send(data);
+                next();
+            }
+            }).catch(Sequelize.ValidationError, function (err) {
+                data = {};
+                data.estatus = "error";
+                data.code = "SearchNotExecuted";
+                data.error = err.message;
+                res.send(data);
+                next();
+            }).catch(function (err) {
+                data = {};
+                data.estatus = "error";
+                data.code = "SearchNotExecuted";
+                data.error = err.message;
+                res.send(data);
+                next();
+            }
+            );
+    }
+
     server.get(urlRoute, allDatosAcademicos);
     server.get(urlRoute + ':id', allDatosAcademicos);
+
+    server.post(urlRoute, saveDatosAcademicos);
 }

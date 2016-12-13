@@ -56,6 +56,7 @@
     }
 
     function saveCarrera(req, res, next) {
+        //Todo: Agregar validacion de campos para seguridad
 
         db.ex_Carrera.create(
             {
@@ -78,14 +79,14 @@
         }).catch(Sequelize.ValidationError, function (err) {
             data = {};
             data.estatus = "error";
-            data.code = "SearchNotExecuted";
+            data.code = "InsertNotExecuted";
             data.error = err.message;
             res.send(data);
             next();
         }).catch(function (err) {
             data = {};
             data.estatus = "error";
-            data.code = "SearchNotExecuted";
+            data.code = "InsertNotExecuted";
             data.error = err.message;
             res.send(data);
             next();
